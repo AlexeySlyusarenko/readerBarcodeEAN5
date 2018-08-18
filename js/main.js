@@ -1,0 +1,83 @@
+import getBarcodeEAN5FromImage from './bar_code.js';
+
+let videoSetting = {};
+
+if(1) {
+    videoSetting = {width: { min: 1024, ideal: 1280},
+                    height: { min: 700, ideal: 720}};
+}
+
+let videoElem = document.querySelector('.video__stream'),
+    messageElem = document.querySelector('.barcode-message'),
+    textMessageElem = document.querySelector('.barcode-message__text'),
+    buttonMessageElem = document.querySelector('.barcode-message__button'),
+    errorElem = document.querySelector('.error-message'),
+    infoElem = document.querySelector('.info-message'),
+    videoStreamTracks,
+    idSetInterval,
+    infoMessangeShow = 1;
+
+function showBarcodeMessage(message) {
+    textMessageElem.textContent = message;
+    messageElem.classList.add('barcode-message--show');
+    clearInterval(idSetInterval);
+    setTimeout(videoStreamTracksStop, 500);
+}
+
+function hideWindowMessage() {
+    messageElem.classList.remove('barcode-message--show');
+    getPermisionToCamera();
+}
+
+function clickButtonMessage() {
+    buttonMessageElem.classList.add('barcode-message__button--click');
+    setTimeout(() => {
+        buttonMessageElem.classList.remove('barcode-message__button--click');
+    }, 500);
+}
+
+function showErrorMessage() {
+    errorElem.classList.add('error-message--show');
+}
+
+function hideInfoMessage() {
+    infoMessangeShow = 0;
+    infoElem.classList.remove('info-message--show');
+}
+
+function barcodeEAN5FromImage() {
+    let barcodeEAN5 = getBarcodeEAN5FromImage(videoElem);
+    if (barcodeEAN5) showBarcodeMessage(barcodeEAN5);
+}
+
+function videoStreamTracksStop() {
+    videoStreamTracks.forEach((track) => {
+        track.stop()});
+}
+
+function getPermisionToCamera() {
+    navigator.mediaDevices.getUserMedia({ video: videoSetting, audio: false })
+        .then(function(stream) {
+            if (infoMessangeShow) hideInfoMessage();
+            videoElem.srcObject = stream;
+            videoElem.play();
+            videoStreamTracks = stream.getTracks();
+        })
+        .catch(function(err) {
+            hideInfoMessage();
+            showErrorMessage();
+        });
+
+    idSetInterval = setInterval(barcodeEAN5FromImage, 200);
+}
+
+buttonMessageElem.addEventListener('click', () => {
+    clickButtonMessage();
+    hideWindowMessage();
+}, true);
+buttonMessageElem.addEventListener('touch', () => {
+    clickButtonMessage();
+    hideWindowMessage();
+}, true);
+
+getPermisionToCamera();

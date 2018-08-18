@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scanner Barcode EAN5</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="video">
+            <video class="video__stream"></video>
+            <div class="video__frame">
+                <div class="video__squard video__squard--redline"></div>
+                <div class="video__squard video__squard--barcode">
+                    <div class="barcode"></div>
+                </div>
+            </div>
+        </div>
+        <div class="barcode-message">
+            <h3 class="barcode-message__header">Your EAN5-code:</h3>
+            <div class="barcode-message__text"></div>
+            <div class="barcode-message__button">Repeat</div>
+        </div>
+        <div class="error-message">
+            <h3 class="error-message__header">Your device does not have a camera or minimal resolution.</h3>
+        </div>
+        <div class="info-message info-message--show">
+            <h3 class="info-message__header">Your camera is used only for scanning barcode.</h3>
+        </div>
+    </div>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
