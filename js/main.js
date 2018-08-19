@@ -77,13 +77,13 @@ function getPermisionToCamera() {
     idSetInterval = setInterval(barcodeEAN5FromImage, 200);
 }
 
-buttonMessageElem.addEventListener('click', () => {
-    clickButtonMessage();
-    hideWindowMessage();
-}, true);
-buttonMessageElem.addEventListener('touch', () => {
-    clickButtonMessage();
-    hideWindowMessage();
-}, true);
+// buttonMessageElem.addEventListener('click', () => {
+//     clickButtonMessage();
+//     hideWindowMessage();
+// }, true);
+// buttonMessageElem.addEventListener('touch', () => {
+//     clickButtonMessage();
+//     hideWindowMessage();
+// }, true);
 
 getPermisionToCamera();
