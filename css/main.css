@@ -105,7 +105,8 @@ body{
 .barcode-message {
     z-index: 250;
     opacity: 0;
-    display: flex;
+    display: none;
+    /* display: flex; */
     flex-flow: column nowrap;
     justify-content: center;
     align-content: center;
@@ -145,7 +146,8 @@ body{
 .error-message {
     z-index: 200;
     opacity: 0;
-    display: flex;
+    display: none;
+    /* display: flex; */
     flex-flow: column nowrap;
     justify-content: center;
     align-content: center;
@@ -165,7 +167,8 @@ body{
 .info-message {
     z-index: 150;
     opacity: 0;
-    display: flex;
+    display: none;
+    /* display: flex; */
     flex-flow: column nowrap;
     justify-content: center;
     align-content: center;
