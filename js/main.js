@@ -1,11 +1,11 @@
 import getBarcodeEAN5FromImage from './bar_code.js';
 
-let videoSetting = {};
+let videoSetting = true;
 
-if(1) {
-    videoSetting = {width: { min: 1024, ideal: 1280},
-                    height: { min: 700, ideal: 720}};
-}
+// if(1) {
+//     videoSetting = {width: { min: 1024, ideal: 1280},
+//                     height: { min: 700, ideal: 720}};
+// }
 
 let videoElem = document.querySelector('.video__stream'),
     messageElem = document.querySelector('.barcode-message'),
