@@ -40,7 +40,8 @@ body{
 }
 .video__frame {
     z-index: 100;
-    display: flex;
+    display: none;
+    /* display: flex; */
     flex-flow: var(--video-frame-direction) nowrap;
     position: absolute;
     left: 0;
