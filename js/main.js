@@ -58,7 +58,7 @@ function videoStreamTracksStop() {
 function getPermisionToCamera() {
     navigator.mediaDevices.getUserMedia({ video: videoSetting, audio: false })
         .then(function(stream) {
-            if (infoMessangeShow) hideInfoMessage();
+            // if (infoMessangeShow) hideInfoMessage();
             videoElem.srcObject = stream;
             videoElem.play()
                 .then(() => {
@@ -74,7 +74,7 @@ function getPermisionToCamera() {
             showErrorMessage();
         });
 
-    idSetInterval = setInterval(barcodeEAN5FromImage, 200);
+    // idSetInterval = setInterval(barcodeEAN5FromImage, 200);
 }
 
 // buttonMessageElem.addEventListener('click', () => {
