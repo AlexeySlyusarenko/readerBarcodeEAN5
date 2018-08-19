@@ -60,13 +60,13 @@ function getPermisionToCamera() {
         .then(function(stream) {
             // if (infoMessangeShow) hideInfoMessage();
             videoElem.srcObject = stream;
-            videoElem.play()
-                .then(() => {
-                    console.log('Video play');                })
-                .catch((error) => {
-                    // An error ocurred or the user agent prevented playback.
-                    console.log('Error: ' + error);
-                });
+            // videoElem.play()
+            //     .then(() => {
+            //         console.log('Video play');                })
+            //     .catch((error) => {
+            //         // An error ocurred or the user agent prevented playback.
+            //         console.log('Error: ' + error);
+            //     });
             videoStreamTracks = stream.getTracks();
         })
         .catch(function(err) {
