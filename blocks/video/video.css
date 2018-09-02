@@ -22,7 +22,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 0;
+    border-radius: 3px;
     background-color: black;
 }
 
@@ -80,7 +80,7 @@
             transform-origin: 50% 25%;
         }
         .video__stream {
-            border-radius: 3px;
+            border-radius: 0;
         }
         .video__frame {
             flex-flow: column nowrap;
