@@ -1,0 +1,23 @@
+{
+  "name": "readerbarcodeean5",
+  "version": "0.0.1",
+  "description": "Reader barcode EAN5",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexeySlyusarenko/readerBarcodeEAN5.git"
+  },
+  "keywords": [
+    "barcode",
+    "EAN5"
+  ],
+  "author": "Alexey Slyusarenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexeySlyusarenko/readerBarcodeEAN5/issues"
+  },
+  "homepage": "https://github.com/AlexeySlyusarenko/readerBarcodeEAN5#readme"
+}
