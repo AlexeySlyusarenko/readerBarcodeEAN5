@@ -2,13 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
     width: var(--global-window-width);
     height: var(--global-window-height);
 }
 
 .container__video {
+    z-index: 50;
+    position: relative;
     width: 80%;
+    max-width: 900px;
     height: auto;
 }
 

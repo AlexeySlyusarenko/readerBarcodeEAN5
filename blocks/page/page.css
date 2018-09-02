@@ -3,4 +3,23 @@
     width: var(--global-window-width);
     height: var(--global-window-height);
     background-color: rgb(200, 200, 200);
+    overflow: hidden;
+}
+
+.page__message {
+    z-index: 200;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    transition: all .3s ease-in-out 0s;
+}
+
+.page__message--show {
+    /* bottom: 0;
+    top: initial; */
+}
+
+@keyframes animation-page__message--show {
+
 }

@@ -4,3 +4,10 @@
     font-weight: normal;
     font-style: normal;
 }
+
+.text--gostb {
+    font-family: "GOST type B";
+}
+.text--gostb-h3 {
+    line-height: 30px;
+}

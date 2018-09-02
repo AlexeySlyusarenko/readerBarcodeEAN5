@@ -1,81 +1,45 @@
-/* barcode message */
-.barcode-message {
-    z-index: 250;
-    opacity: 0;
+.message {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    align-content: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-family: "GOST type B";
-    background-color: rgb(200, 200, 200);
-    will-change: opacity;
-    transition: opacity 0.3s linear 0.8s;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
-.barcode-message--show {
-    opacity: 1;
-    transition: opacity 0.3s linear 0s;
+.message--window {
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgb(150, 150, 150);
 }
-.barcode-message__button {
-    align-self: center;
-    width: 90px;
-    margin: 20px 0;
-    padding: 10px 20px;
-    background-color: rgba(230, 20, 20, .7);
-    border-radius: var(--video-frame-radius);
-    user-select: none;
-    cursor: pointer;
-}
-.barcode-message__button--click {
-    animation: button-click 0.4s ease-in-out 0s;
-}
-@keyframes button-click {
-    from {background-color: rgba(230, 20, 20, .7);}
-    50% {background-color: rgba(65, 7, 7, 0.7);}
-    to {background-color: rgba(230, 20, 20, .7);}
+.message--footer {
+    padding: 15px;
+    background-color: rgba(189, 88, 75, 0.9);
 }
 
-/* error message */
-.error-message {
-    z-index: 200;
-    opacity: 0;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-content: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+.message__header{
     text-align: center;
-    font-family: "GOST type B";
-    background-color: rgba(200, 200, 200, .95);
-    will-change: opacity;
-    transition: opacity 0.3s linear 0s;
-}
-.error-message--show {
-    opacity: 1;
 }
 
-/* info message */
-.info-message {
-    z-index: 150;
-    opacity: 0;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-content: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-family: "GOST type B";
-    background-color: rgb(200, 200, 200);
-    will-change: opacity;
-    transition: opacity 0.3s linear 1.5s;
+.message__img {
+    width: 30%;
+    height: 40%;
+    margin: 10px 0 20px 0;
 }
-.info-message--show {
-    opacity: 1;
+
+.message__button {
+    position: relative;
 }
+
+/* ======================= media query ======================= */
+
+/* for portrait */
+@media screen and (orientation: portrait) {
+
+    /* mobile */
+    @media screen and (max-width: 599px) {
+        .message__img {
+            width: 60%;
+            height: 20%;
+        }
+    }
+}
+/* =========================================================== */
