@@ -12,14 +12,10 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    transition: all .3s ease-in-out 0s;
+    max-height: 0;
+    transition: all .4s ease-in-out 0s;
 }
 
 .page__message--show {
-    /* bottom: 0;
-    top: initial; */
-}
-
-@keyframes animation-page__message--show {
-
+    max-height: 100px;
 }

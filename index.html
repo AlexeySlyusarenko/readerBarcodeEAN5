@@ -42,10 +42,10 @@
 
     <div class="container">
         <div class="container__video video">
-            <!-- <div class="video__message message message--window">
+            <div class="video__message message message--window">
                 <h3 class="message__header text--gostb text--gostb-h3">Your EAN5-code:</h3>
                 <div class="message__img barcode">
-                    <ul class="barcode__img barcode__img--example">
+                    <ul class="barcode__img">
                         <li class="barcode__line"></li>
                         <li class="barcode__line"></li>
                         <li class="barcode__line"></li>
@@ -79,10 +79,10 @@
                         <li class="barcode__line"></li>
                         <li class="barcode__line"></li>
                     </ul>
-                    <div class="barcode__text text--gostb">52495</div>
+                    <div class="barcode__text text--gostb"></div>
                 </div>
                 <button class="message__button button text--gostb">Repeat</button>
-            </div> -->
+            </div>
             <video autoplay muted playsinline class="video__stream"></video>
             <div class="video__frame">
                 <div class="video__squard"></div>
@@ -129,11 +129,15 @@
         </div>
     </div>
 
-    <!-- <div class="page__message message message--footer">
-        <h3 class="message__header text--gostb text--gostb-h3">Your browser does not access a camera.</h3>
-    </div> -->
-    <div class="page__message page__message--show message message--footer">
-        <h3 class="message__header text--gostb text--gostb-h3">Your camera is used only for scanning barcode.</h3>
+    <div class="page__message page__message--show">
+            <div class="message message--footer">
+                <h3 class="message__header text--gostb text--gostb-h3">Your browser does not access a camera.</h3>
+            </div>
+        </div>
+    <div class="page__message">
+        <div class="message message--footer">
+            <h3 class="message__header text--gostb text--gostb-h3">Your camera is used only for scanning barcode.</h3>
+        </div>
     </div>
 
     <script type="module" src="js/main.js"></script>

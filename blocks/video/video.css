@@ -7,6 +7,14 @@
     top: 0;
     width: 100%;
     height: 100%;
+    transform-origin: 25% 50%;
+    transform: scale3d(0, 0, 1);
+    opacity: 0;
+    transition: all .225s ease-in-out 0s;
+}
+.video__message--show {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
 }
 
 .video__stream {
@@ -68,6 +76,9 @@
 
     /* mobile */
     @media screen and (max-width: 599px) {
+        .video__message {
+            transform-origin: 50% 25%;
+        }
         .video__stream {
             border-radius: 3px;
         }

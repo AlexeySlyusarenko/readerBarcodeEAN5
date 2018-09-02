@@ -1,4 +1,5 @@
 import getBarcodeEAN5FromImage from './bar_code.js';
+import showBarcodeEAN5 from '../blocks/barcode/barcode.js';
 
 let videoSetting = {};
 
