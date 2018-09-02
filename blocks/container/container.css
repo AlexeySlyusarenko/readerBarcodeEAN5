@@ -1,28 +1,16 @@
 .container {
-    /* var */
-    --container-width: var(--global-window-width);
-    --container-height: var(--global-window-height);
-
-    /* style */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    width: var(--container-width);
-    height: var(--container-height);
+    width: var(--global-window-width);
+    height: var(--global-window-height);
 }
 
 .container__video {
-    /* var */
-    --container-video-width: 500px;
-    --container-video-height: auto;
-
-    /* style */
-    width: var(--container-video-width);
-    height: var(--container-video-height);
+    width: 80%;
+    height: auto;
 }
-
-/* ======================= define var ======================== */
 
 /* ======================= media query ======================= */
 
@@ -32,8 +20,8 @@
     /* mobile */
     @media screen and (max-width: 599px) {
         .container__video {
-            --container-video-width: var(--global-window-width);
-            --container-video-height: var(--global-window-height);
+            width: var(--global-window-width);
+           height: var(--global-window-height);
         }
     }
 }
@@ -44,16 +32,16 @@
     /* mobile */
     @media screen and (max-width: 799px) {
         .container__video {
-            --container-video-width: var(--global-window-width);
-            --container-video-height: var(--global-window-height);
+            width: var(--global-window-width);
+            height: var(--global-window-height);
         }
     }
 
     /* iphone x */
     @media screen and (max-width: 999px) and (min-aspect-ratio: 2/1) {
         .container__video {
-            --container-video-width: var(--global-window-width);
-            --container-video-height: var(--global-window-height);
+            width: var(--global-window-width);
+            height: var(--global-window-height);
         }
     }
 }

@@ -1,0 +1,9 @@
+.barcode {
+    position: absolute;
+    left: 20%;
+    top: 30%;
+    width: 60%;
+    height: 40%;
+    background-color: rgba(255, 0, 255, .8);
+    border-radius: 5px;
+}

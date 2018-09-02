@@ -6,12 +6,12 @@
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: var(--video-frame-radius);
+    border-radius: 5px;
 }
 .video__frame {
     z-index: 100;
     display: flex;
-    flex-flow: var(--video-frame-direction) nowrap;
+    flex-flow: row nowrap;
     position: absolute;
     left: 0;
     top: 0;
@@ -23,51 +23,54 @@
     width: 50%;
     height: 100%;
 }
-.video__squard--redline::before {
+.video__squard::after {
     z-index: 120;
     content: '';
     position: absolute;
-    left: 5%;
+    left: 10%;
     top: 49%;
-    width: 90%;
+    width: 80%;
     height: 4px;
     border-radius: 2px;
     background-color: rgba(230, 20, 20, .5);
 }
-.video__squard--redline::after {
-    z-index: 120;
-    content: '';
-    position: absolute;
-    left: 105%;
-    top: 49%;
-    width: 90%;
-    height: 4px;
-    border-radius: 2px;
-    background-color: rgba(230, 20, 20, .5);
+.video__squard--grey {
+    background-color: rgba(200, 200, 200, .7);
 }
+
 .video__squard--barcode {
     z-index: 100;
     border-top-right-radius: var(--video-frame-radius);
     border-bottom-right-radius: var(--video-frame-radius);
     background-color: rgba(200, 200, 200, .7);
 }
-.barcode {
-    position: absolute;
-    left: 20%;
-    top: 30%;
-    width: 60%;
-    height: 40%;
-    background-color: rgba(255, 255, 255, .8);
-    background-image: linear-gradient(90deg, transparent 7%, rgb(0,0,0) 7%, rgb(0,0,0) 14%, transparent 14%, transparent 21%, rgb(0,0,0) 21%, rgb(0,0,0) 35%,transparent 35%, transparent 56%, rgb(0,0,0) 56%, rgb(0,0,0) 70%, transparent 70%, transparent 77%, rgb(0,0,0) 77%,rgb(0,0,0) 98%,transparent 98%);
-    background-size: 27%;
-    border-radius: var(--video-frame-radius);
+
+/* ======================= media query ======================= */
+
+/* for portrait */
+@media screen and (orientation: portrait) {
+
+    /* mobile */
+    @media screen and (max-width: 599px) {
+        .video__frame {
+            flex-flow: column nowrap;
+        }
+        .video__squard {
+            width: 100%;
+            height: 50%;
+        }
+    }
 }
-.barcode::after {
-    content:'52495';
-    position: absolute;
-    left: 0;
-    top: 105%;
-    width: 100%;
-    text-align: center;
-    font-family: "GOST type B";
+
+/* for landscape */
+@media screen and (orientation: landscape) {
+
+    /* mobile */
+    @media screen and (max-width: 799px) {
+    }
+
+    /* iphone x */
+    @media screen and (max-width: 999px) and (min-aspect-ratio: 2/1) {
+    }
 }
+/* =========================================================== */
