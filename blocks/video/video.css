@@ -14,7 +14,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 3px;
+    border-radius: 0;
     background-color: black;
 }
 
@@ -68,6 +68,9 @@
 
     /* mobile */
     @media screen and (max-width: 599px) {
+        .video__stream {
+            border-radius: 3px;
+        }
         .video__frame {
             flex-flow: column nowrap;
         }
