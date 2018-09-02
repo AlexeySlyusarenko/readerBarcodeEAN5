@@ -1,39 +1,9 @@
-/* var common*/
-:root {
-    --container-width: var(--global-windows-width);
-    --container-height: var(--global-windows-height);
-    --container-video-width: 500px;
-    --container-video-height: auto;
-}
-
-/* var mobile*/
-/* for portrait */
-@media screen and (orientation: portrait) {
-    @media screen and (max-width: 599px) {
-        :root {
-            --container-video-width: var(--global-windows-width);
-            --container-video-height: var(--global-windows-height);
-        }
-    }
-}
-
-/* for landscape */
-@media screen and (orientation: landscape) {
-    @media screen and (max-width: 799px) {
-        :root {
-            --container-video-width: var(--global-windows-width);
-            --container-video-height: var(--global-windows-height);
-        }
-    }
-    @media screen and (max-width: 999px) and (min-aspect-ratio: 2/1) {
-        :root {
-            --container-video-width: 100%;
-        }
-    }
-}
-/* ============================================================== */
-
 .container {
+    /* var */
+    --container-width: var(--global-window-width);
+    --container-height: var(--global-window-height);
+
+    /* style */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,6 +13,48 @@
 }
 
 .container__video {
+    /* var */
+    --container-video-width: 500px;
+    --container-video-height: auto;
+
+    /* style */
     width: var(--container-video-width);
     height: var(--container-video-height);
 }
+
+/* ======================= define var ======================== */
+
+/* ======================= media query ======================= */
+
+/* for portrait */
+@media screen and (orientation: portrait) {
+
+    /* mobile */
+    @media screen and (max-width: 599px) {
+        .container__video {
+            --container-video-width: var(--global-window-width);
+            --container-video-height: var(--global-window-height);
+        }
+    }
+}
+
+/* for landscape */
+@media screen and (orientation: landscape) {
+
+    /* mobile */
+    @media screen and (max-width: 799px) {
+        .container__video {
+            --container-video-width: var(--global-window-width);
+            --container-video-height: var(--global-window-height);
+        }
+    }
+
+    /* iphone x */
+    @media screen and (max-width: 999px) and (min-aspect-ratio: 2/1) {
+        .container__video {
+            --container-video-width: var(--global-window-width);
+            --container-video-height: var(--global-window-height);
+        }
+    }
+}
+/* =========================================================== */

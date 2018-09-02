@@ -1,6 +1,6 @@
 .page {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: var(--global-window-width);
+    height: var(--global-window-height);
     background-color: rgb(200, 200, 200);
 }

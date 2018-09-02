@@ -5,25 +5,31 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Scanner Barcode EAN5</title>
-    <script type="text/javascript">
-        alert(document.documentElement.offsetHeight + ', ' +
-            document.documentElement.offsetWidth + ', ' +
-            document.documentElement.clientHeight + ', ' +
-            document.documentElement.clientWidth + ', ' +
-            document.documentElement.scrollHeight + ', ' +
-            document.documentElement.scrollWidth)
-    </script>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body class="page">
-    <!-- <script type="text/javascript">
-        alert(document.documentElement.offsetHeight + ', ' +
-            document.documentElement.offsetWidth + ', ' +
-            document.documentElement.clientHeight + ', ' +
-            document.documentElement.clientWidth + ', ' +
-            document.documentElement.scrollHeight + ', ' +
-            document.documentElement.scrollWidth)
-    </script> -->
+    <script type="text/javascript">
+        let bodyElem = document.querySelector('body'),
+            styleBodyElem = document.createElement('style');
+
+        styleBodyElem.setAttribute('type', 'text/css');
+
+        function initBodySize() {
+            let globalWindowHeight = document.documentElement.clientHeight,
+                globalWindowWidth = document.documentElement.clientWidth;
+
+            styleBodyElem.innerHTML = 
+                `body {
+                    --global-window-width: ${globalWindowWidth}px;
+                    --global-window-height: ${globalWindowHeight}px;
+                }`;
+            bodyElem.appendChild(styleBodyElem);
+        }
+
+        window.addEventListener('resize', initBodySize);
+
+        initBodySize();
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
     <div class="container">
         <div class="container__video video">

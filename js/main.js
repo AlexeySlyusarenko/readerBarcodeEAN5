@@ -87,4 +87,4 @@ function getPermisionToCamera() {
 //     hideWindowMessage();
 // }, true);
 
-// getPermisionToCamera();
+getPermisionToCamera();

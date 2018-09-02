@@ -1,8 +1,8 @@
 @import url('reset-style.css');
-@import url('../common.blocks/page/page.css');
-@import url('../common.blocks/container/container.css');
-@import url('../common.blocks/video/video.css');
-@import url('../common.blocks/barcode/barcode.css');
-@import url('../common.blocks/message/message.css');
-@import url('../common.blocks/text/text.css');
-@import url('../common.blocks/button/button.css');
+@import url('../blocks/page/page.css');
+@import url('../blocks/container/container.css');
+@import url('../blocks/video/video.css');
+@import url('../blocks/barcode/barcode.css');
+@import url('../blocks/message/message.css');
+@import url('../blocks/text/text.css');
+@import url('../blocks/button/button.css');
