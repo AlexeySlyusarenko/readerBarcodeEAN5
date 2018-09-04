@@ -9,7 +9,8 @@ let videoSetting = {};
 
 videoSetting = {facingMode: 'environment', 
                 width: document.documentElement.clientWidth, 
-                height: document.documentElement.clientHeight};
+                //height: document.documentElement.clientHeight,
+            };
 
 // videoSetting = {width: { min: 1024, ideal: 1280},
 //                 height: { min: 700, ideal: 720}};
