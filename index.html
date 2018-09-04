@@ -37,6 +37,10 @@
         window.addEventListener('resize', initBodySize);
 
         initBodySize();
+        
+        document.addEventListener('touchmove', (event) => {
+            event.preventDefault();
+        });
     </script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
