@@ -8,9 +8,9 @@ let videoSetting = {};
 //                 height: { min: 700, ideal: 720}};
 
 videoSetting = {facingMode: 'environment', 
-                width: document.documentElement.clientWidth, 
-                height: document.documentElement.clientHeight
+                aspectRatio: document.documentElement.clientWidth/document.documentElement.clientHeight
             };
+console.log(document.documentElement.clientWidth, document.documentElement.clientHeight);
 
 let videoElem = document.querySelector('.video__stream'),
     messageElem = document.querySelector('.barcode-message'),
@@ -73,8 +73,10 @@ function getPermisionToCamera() {
             //         console.log('Error: ' + error);
             //     });
             videoStreamTracks = stream.getTracks();
+            console.log(videoStreamTracks[0].getConstraints());
         })
         .catch(function(err) {
+            console.log('error');
             hideInfoMessage();
             showErrorMessage();
         });
