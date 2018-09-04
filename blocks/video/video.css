@@ -1,5 +1,3 @@
-.video {}
-
 .video__message {
     z-index: 200;
     position: absolute;
@@ -66,7 +64,6 @@
     width: 60%;
     height: 50%;
     padding-top: 5%;
-
 }
 
 /* ======================= media query ======================= */

@@ -4,6 +4,7 @@
     height: var(--global-window-height);
     background-color: rgb(200, 200, 200);
     overflow: hidden;
+    pointer-events: none;
 }
 
 .page__message {
