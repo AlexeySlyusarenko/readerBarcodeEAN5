@@ -9,7 +9,7 @@ let windowHeight = document.documentElement.clientHeight,
 // videoSetting = {width: { min: 1024, ideal: 1280},
 //                 height: { min: 700, ideal: 720}};
 
-videoSetting = {facingMode: 'environment', width:  windowWidth, height: windowHeight};
+videoSetting = {facingMode: 'environment'};
 
 let videoElem = document.querySelector('.video__stream'),
     messageElem = document.querySelector('.barcode-message'),
