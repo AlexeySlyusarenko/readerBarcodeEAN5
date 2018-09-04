@@ -32,9 +32,11 @@
                     --global-window-height: ${globalWindowHeight}px;
                 }`;
             bodyElem.appendChild(styleBodyElem);
+            console.log(globalWindowWidth, globalWindowHeight);
         }
 
         window.addEventListener('resize', initBodySize);
+        // window.addEventListener('orientationchange', initBodySize);
 
         initBodySize();
         
