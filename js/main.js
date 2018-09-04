@@ -1,14 +1,17 @@
 import getBarcodeEAN5FromImage from './bar_code.js';
 import showBarcodeEAN5 from '../blocks/barcode/barcode.js';
 
-let videoSetting = {};
-
+let videoSetting = {},
+    aspectRatio;
 
 // videoSetting = {width: { min: 1024, ideal: 1280},
 //                 height: { min: 700, ideal: 720}};
 
+aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
+                document.documentElement.clientWidth / document.documentElement.clientHeight:
+                document.documentElement.clientHeight / document.documentElement.clientWidth;
 videoSetting = {facingMode: 'environment', 
-                aspectRatio: document.documentElement.clientWidth/document.documentElement.clientHeight
+                aspectRatio: aspectRatio
             };
 console.log(document.documentElement.clientWidth, document.documentElement.clientHeight);
 
