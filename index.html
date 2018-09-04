@@ -40,9 +40,12 @@
 
         initBodySize();
         
-        document.addEventListener('touchmove', (event) => {
+        window.addEventListener("touchstart", (event) => {
             event.preventDefault();
-        });
+        }, {passive: false} );
+        window.addEventListener("touchmove", (event) => {
+            event.preventDefault();
+        }, {passive: false} );
     </script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
