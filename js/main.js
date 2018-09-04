@@ -101,7 +101,7 @@ window.addEventListener('resize', () => {
     console.log(videoStreamTracks);
 
     aspectRatio = document.documentElement.clientwidth / document.documentElement.clientHeight;
-    videoStreamTracks[0].applyConstraints({aspectRatio: aspectRatio});
+    videoStreamTracks[0].applyConstraints({aspectRatio: 0.66});
     console.log(123);
 });
 
