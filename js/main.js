@@ -2,8 +2,6 @@ import getBarcodeEAN5FromImage from './bar_code.js';
 import showBarcodeEAN5 from '../blocks/barcode/barcode.js';
 
 let videoSetting = {};
-let windowHeight = document.documentElement.clientHeight,
-    windowWidth = document.documentElement.clientWidth;
 
 
 // videoSetting = {width: { min: 1024, ideal: 1280},
@@ -72,7 +70,6 @@ function getPermisionToCamera() {
             //         console.log('Error: ' + error);
             //     });
             videoStreamTracks = stream.getTracks();
-            console.log(videoStreamTracks[0].getConstraints());
         })
         .catch(function(err) {
             hideInfoMessage();
