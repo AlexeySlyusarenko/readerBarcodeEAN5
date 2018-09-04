@@ -6,12 +6,13 @@ let videoSetting = {},
 
 // videoSetting = {width: { min: 1024, ideal: 1280},
 //                 height: { min: 700, ideal: 720}};
-aspectRatio = document.documentElement.clientwidth / document.documentElement.clientHeight;
-// aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
-//                 document.documentElement.clientWidth / document.documentElement.clientHeight:
-//                 document.documentElement.clientHeight / document.documentElement.clientWidth;
+
+aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
+                document.documentElement.clientWidth / document.documentElement.clientHeight:
+                document.documentElement.clientHeight / document.documentElement.clientWidth;
+
 videoSetting = {facingMode: 'environment', 
-                aspectRatio: aspectRatio
+                aspectRatio: 1.5
             };
 console.log(document.documentElement.clientWidth, document.documentElement.clientHeight);
 

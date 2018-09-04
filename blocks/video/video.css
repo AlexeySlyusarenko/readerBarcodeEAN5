@@ -88,4 +88,18 @@
         }
     }
 }
+
+/* for landscape */
+@media screen and (orientation: landscape) {
+    @media screen and (max-width: 799px) {
+        .video__stream {
+            border-radius: 0;
+        }
+    }
+    @media screen and (max-width: 999px) and (min-aspect-ratio: 2/1) {
+        .video__stream {
+            border-radius: 0;
+        }
+    }
+}
 /* =========================================================== */
