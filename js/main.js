@@ -96,4 +96,12 @@ function getPermisionToCamera() {
 //     hideWindowMessage();
 // }, true);
 
+window.addEventListener('resize', () => {
+    aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
+        document.documentElement.clientWidth / document.documentElement.clientHeight:
+        document.documentElement.clientHeight / document.documentElement.clientWidth;
+    videoStreamTracks[0].applyConstraints({aspectRatio: aspectRatio});
+    console.log(123);
+});
+
 getPermisionToCamera();
