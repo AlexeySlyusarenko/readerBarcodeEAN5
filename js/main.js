@@ -6,10 +6,10 @@ let videoSetting = {},
 
 // videoSetting = {width: { min: 1024, ideal: 1280},
 //                 height: { min: 700, ideal: 720}};
-
-aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
-                document.documentElement.clientWidth / document.documentElement.clientHeight:
-                document.documentElement.clientHeight / document.documentElement.clientWidth;
+aspectRatio = document.documentElement.clientwidth / document.documentElement.clientHeight;
+// aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
+//                 document.documentElement.clientWidth / document.documentElement.clientHeight:
+//                 document.documentElement.clientHeight / document.documentElement.clientWidth;
 videoSetting = {facingMode: 'environment', 
                 aspectRatio: aspectRatio
             };
@@ -97,9 +97,9 @@ function getPermisionToCamera() {
 // }, true);
 
 window.addEventListener('resize', () => {
-    aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
-        document.documentElement.clientWidth / document.documentElement.clientHeight:
-        document.documentElement.clientHeight / document.documentElement.clientWidth;
+    console.log(videoStreamTracks);
+
+    aspectRatio = document.documentElement.clientwidth / document.documentElement.clientHeight;
     videoStreamTracks[0].applyConstraints({aspectRatio: aspectRatio});
     console.log(123);
 });
