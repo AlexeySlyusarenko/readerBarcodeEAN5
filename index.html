@@ -16,38 +16,7 @@
     <title>Scanner Barcode EAN5</title>
 </head>
 <body class="page">
-    <script type="text/javascript">
-        let bodyElem = document.querySelector('body'),
-            styleBodyElem = document.createElement('style');
-
-        styleBodyElem.setAttribute('type', 'text/css');
-
-        function initBodySize() {
-            let globalWindowHeight = document.documentElement.clientHeight,
-                globalWindowWidth = document.documentElement.clientWidth;
-
-            styleBodyElem.innerHTML = 
-                `body {
-                    --global-window-width: ${globalWindowWidth}px;
-                    --global-window-height: ${globalWindowHeight}px;
-                }`;
-            bodyElem.appendChild(styleBodyElem);
-            console.log(globalWindowWidth, globalWindowHeight);
-        }
-
-        window.addEventListener('resize', initBodySize);
-        // window.addEventListener('orientationchange', initBodySize);
-
-        initBodySize();
-        
-
-        window.addEventListener("touchstart", (event) => {
-            
-        }, {passive: false} );
-        window.addEventListener("touchmove", (event) => {
-            event.preventDefault();
-        }, {passive: false} );
-    </script>
+    <script src="/blocks/page/page.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
     <div class="container">
@@ -140,10 +109,10 @@
     </div>
 
     <div class="page__message page__message--show">
-            <div class="message message--footer">
-                <h3 class="message__header text--gostb text--gostb-h3">Your browser does not access a camera.</h3>
-            </div>
+        <div class="message message--footer">
+            <h3 class="message__header text--gostb text--gostb-h3">Your browser does not access a camera.</h3>
         </div>
+    </div>
     <div class="page__message">
         <div class="message message--footer">
             <h3 class="message__header text--gostb text--gostb-h3">Your camera is used only for scanning barcode.</h3>
