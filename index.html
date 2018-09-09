@@ -27,7 +27,7 @@
                 globalWindowWidth = document.documentElement.clientWidth;
 
             stylePageElem.innerHTML = 
-                `body {
+                `.page {
                     --global-window-width: ${globalWindowWidth}px;
                     --global-window-height: ${globalWindowHeight}px;
                 }`;
@@ -48,44 +48,9 @@
 
     <div class="container">
         <div class="container__video video">
-            <div class="video__message message message--window">
+            <div class="video__message video__message--animate-show message message--window">
                 <h3 class="message__header text--gostb text--gostb-h3">Your EAN5-code:</h3>
                 <div class="message__img">
-                    <!-- <ul class="barcode__area">
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                        <li class="barcode__line"></li>
-                    </ul>
-                    <div class="barcode__text text--gostb"></div> -->
                 </div>
                 <button class="message__button button text--gostb">Repeat</button>
             </div>

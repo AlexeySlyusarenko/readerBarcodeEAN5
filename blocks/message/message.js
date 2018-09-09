@@ -2,7 +2,6 @@ import addHandlersButton from '../button/button.js';
 import drawBarcodeEAN5 from '../barcode/barcode.js';
 
 function setHeaderMessage(messageBlock, headerText) {
-    console.log(6);
     let headerMessageElem = messageBlock.querySelector('.message__header');
    
     if (headerMessageElem) {
@@ -19,7 +18,6 @@ function setImgMessage(messageBlock, imgMessageObj) {
 }
 
 function clearImgMessage(messageBlock) {
-    console.log(messageBlock);
     let imgMessageElem = messageBlock.querySelector('.message__img');
 
     imgMessageElem.innerHTML = '';
@@ -31,7 +29,8 @@ function addHandlersButtonMessage(messageBlock, executeFunction, paramExecuteFun
     return addHandlersButton(buttonMessageElem, executeFunction, paramExecuteFunction);
 }
 
-export { setHeaderMessage,
+export { 
+    setHeaderMessage,
     setImgMessage,
     clearImgMessage,
     addHandlersButtonMessage

@@ -1,7 +1,8 @@
-import { setImgMessage,
-        clearImgMessage,
-        addHandlersButtonMessage 
-    } from '../message/message.js';
+import { 
+    setImgMessage,
+    clearImgMessage,
+    addHandlersButtonMessage 
+} from '../message/message.js';
 
 let videoSetting = {},
     aspectRatio;
@@ -9,9 +10,9 @@ let videoSetting = {},
 // videoSetting = {width: { min: 1024, ideal: 1280},
 //                 height: { min: 700, ideal: 720}};
 
-// aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
-//                 document.documentElement.clientWidth / document.documentElement.clientHeight:
-//                 document.documentElement.clientHeight / document.documentElement.clientWidth;
+aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
+                document.documentElement.clientWidth / document.documentElement.clientHeight:
+                document.documentElement.clientHeight / document.documentElement.clientWidth;
 
 videoSetting = {facingMode: 'environment', 
                 // aspectRatio: aspectRatio
@@ -26,7 +27,7 @@ function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
         .then(function(stream) {
             videoStreamElem.srcObject = stream;
             videoStreamTracks = stream.getTracks();
-
+            
             return videoStreamElem;
         })
         .then(() => {return funcResolve(videoStreamElem)})
