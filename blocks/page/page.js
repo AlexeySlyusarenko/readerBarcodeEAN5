@@ -1,13 +1,12 @@
-import { initButtonMessage, setHeaderMessage, setImgMessage } from '../message/message.js';
+import { setHeaderMessage } from '../message/message.js';
 
 let pageBlock = document.querySelector('.page'),
     pageMessageElem;
 
 function showPageMessage(pageMessageText) {
-    console.log(pageMessageElem.classList.contains('page__message--show'));
     if (pageMessageElem.classList.contains('page__message--show')) {
         hidePageMessage();
-        setInterval(() => {
+        setTimeout(() => {
             setPageMessage(pageMessageText);
         }, 500);
     } else {

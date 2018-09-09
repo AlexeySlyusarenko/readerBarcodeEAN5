@@ -1,14 +1,8 @@
 import addHandlersButton from '../button/button.js';
-
-function initButtonMessage(messageBlock, addHandlersButton) {
-    let buttonMessageElem = messageBlock.querySelector('.message__button');
-
-    if (buttonMessageElem) {
-        addHandlersButton();
-    }
-}
+import drawBarcodeEAN5 from '../barcode/barcode.js';
 
 function setHeaderMessage(messageBlock, headerText) {
+    console.log(6);
     let headerMessageElem = messageBlock.querySelector('.message__header');
    
     if (headerMessageElem) {
@@ -16,12 +10,29 @@ function setHeaderMessage(messageBlock, headerText) {
     }
 }
 
-function setImgMessage(messageBlock, imgBlock) {
+function setImgMessage(messageBlock, imgMessageObj) {
     let imgMessageElem = messageBlock.querySelector('.message__img');
-   
+
     if (imgMessageElem) {
-        imgMessageElem.innerHTML = imgBlock;
+        drawBarcodeEAN5(imgMessageElem, imgMessageObj.widthLineEAN5Arr, imgMessageObj.number);
     }
 }
 
-export { initButtonMessage, setHeaderMessage, setImgMessage };
+function clearImgMessage(messageBlock) {
+    console.log(messageBlock);
+    let imgMessageElem = messageBlock.querySelector('.message__img');
+
+    imgMessageElem.innerHTML = '';
+}
+
+function addHandlersButtonMessage(messageBlock, executeFunction, paramExecuteFunction) {
+    let buttonMessageElem = messageBlock.querySelector('.message__button');
+    
+    return addHandlersButton(buttonMessageElem, executeFunction, paramExecuteFunction);
+}
+
+export { setHeaderMessage,
+    setImgMessage,
+    clearImgMessage,
+    addHandlersButtonMessage
+};

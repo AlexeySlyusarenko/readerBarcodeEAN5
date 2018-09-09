@@ -1,3 +1,8 @@
+import { setImgMessage,
+        clearImgMessage,
+        addHandlersButtonMessage 
+    } from '../message/message.js';
+
 let videoSetting = {},
     aspectRatio;
 
@@ -13,6 +18,7 @@ videoSetting = {facingMode: 'environment',
             };
 
 let videoStreamElem = document.querySelector('.video__stream'),
+    videoMessageElem = document.querySelector('.video__message'),
     videoStreamTracks;
 
 function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
@@ -33,4 +39,28 @@ function stopVideoStreamTracks() {
     });
 }
 
-export {showVideoStreamTrackFromCamera, stopVideoStreamTracks};
+function showVideoMessage(videoMessageImgObj) {
+    setImgMessage(videoMessageElem, videoMessageImgObj);
+    
+    videoMessageElem.classList.add('video__message--animate-show');
+    if (!videoMessageElem.classList.contains('video__message--animate-hide')) {
+        videoMessageElem.classList.add('video__message--animate-hide');
+    }
+}
+
+function hideVideoMessage() {
+    videoMessageElem.classList.remove('video__message--animate-show');
+    clearImgMessage(videoMessageElem);
+}
+
+function addHandlersMessageVideo(executeFunction, paramExecuteFunction) {
+    return addHandlersButtonMessage(videoMessageElem, executeFunction, paramExecuteFunction);
+};
+
+export {
+    showVideoStreamTrackFromCamera,
+    stopVideoStreamTracks,
+    showVideoMessage,
+    hideVideoMessage,
+    addHandlersMessageVideo
+};

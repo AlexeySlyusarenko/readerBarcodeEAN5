@@ -11,7 +11,6 @@ export default function getBarcodeEAN5FromImage(imgElem) {
     let widthAndColorElArr = widthImg > heightImg?
                             getWidthAndColorElArrFromImg(ctx.getImageData(0, Math.floor(heightImg / 2), halfWidthImg, 2).data, halfWidthImg):
                             getWidthAndColorElArrFromImg(ctx.getImageData(0, Math.floor(heightImg / 4), widthImg, 2).data, widthImg);
-    console.log(getNumberEAN5FromWidthAndColorElArr(widthAndColorElArr));
     return getNumberEAN5FromWidthAndColorElArr(widthAndColorElArr);
 }
 
@@ -122,7 +121,7 @@ function checkCodeNumberEAN5Arr(widthLineEAN5Arr) {
 
 function checkInaccurateWidthLineEAN5Arr(modWidthLineEAN5Arr, indexInaccurateModWidthLineEAN5Arr) {
     let n = 2 ** indexInaccurateModWidthLineEAN5Arr.length,
-        numberEAN5;
+        barcodeEAN5Obj = {};
 
     for (let i = 0; i < n; i++) {
         let iStr = i.toString(2),
@@ -133,8 +132,11 @@ function checkInaccurateWidthLineEAN5Arr(modWidthLineEAN5Arr, indexInaccurateMod
         for (let i = 0; i < indexInaccurateModWidthLineEAN5Arr.length; i++) {
             if (iStr[i] == 1) fModWidthLineEAN5Arr[indexInaccurateModWidthLineEAN5Arr[indexInaccurateModWidthLineEAN5Arr.length - 1 - i]]++;
         }
-        numberEAN5 = getNumberEAN5(fModWidthLineEAN5Arr);
-        if (numberEAN5) return numberEAN5;
+
+        barcodeEAN5Obj.widthLineEAN5Arr = fModWidthLineEAN5Arr;
+        barcodeEAN5Obj.number = getNumberEAN5(fModWidthLineEAN5Arr);
+        
+        if (barcodeEAN5Obj.number) return barcodeEAN5Obj;
     }
 
     return false;

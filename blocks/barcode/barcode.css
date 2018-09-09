@@ -5,13 +5,13 @@
     align-items: center;
 }
 
-.barcode__img {
+.barcode__area {
     display: grid;
     grid-template-rows: 1fr;
     width: 100%;
     height: 100%;
 }
-.barcode__img--example {
+.barcode__area--example {
     grid-template-columns: 1fr 1fr 1fr 2fr 
                             1fr 3fr 2fr 1fr
                             1fr 1fr
