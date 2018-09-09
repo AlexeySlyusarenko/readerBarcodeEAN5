@@ -1,26 +1,31 @@
-let pageElem = document.querySelector('.page'),
-    stylePageElem = document.createElement('style');
+import { initButtonMessage, setHeaderMessage, setImgMessage } from '../message/message.js';
 
-stylePageElem.setAttribute('type', 'text/css');
+let pageBlock = document.querySelector('.page'),
+    pageMessageElem;
 
-function setWindowSize() {
-    let globalWindowHeight = document.documentElement.clientHeight,
-        globalWindowWidth = document.documentElement.clientWidth;
-
-    stylePageElem.innerHTML = 
-        `body {
-            --global-window-width: ${globalWindowWidth}px;
-            --global-window-height: ${globalWindowHeight}px;
-        }`;
-    pageElem.appendChild(stylePageElem);
+function showPageMessage(pageMessageText) {
+    console.log(pageMessageElem.classList.contains('page__message--show'));
+    if (pageMessageElem.classList.contains('page__message--show')) {
+        hidePageMessage();
+        setInterval(() => {
+            setPageMessage(pageMessageText);
+        }, 500);
+    } else {
+        setPageMessage(pageMessageText);
+    }
 }
 
-window.addEventListener('resize', setWindowSize);
+function setPageMessage(pageMessageText) {
+    setHeaderMessage(pageMessageElem, pageMessageText);
+    pageMessageElem.classList.add('page__message--show');
+}
 
-setWindowSize();
+function hidePageMessage() {
+    pageMessageElem.classList.remove('page__message--show');
+}
 
-// Disable touchstart scroll in chrome android
-window.addEventListener("touchstart", () => {}, {passive: false} );
-window.addEventListener("touchmove", (event) => {
-    event.preventDefault();
-}, {passive: false} );
+if (pageBlock) {
+    pageMessageElem = pageBlock.querySelector('.page__message');
+}
+
+export { showPageMessage, hidePageMessage };

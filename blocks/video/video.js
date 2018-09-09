@@ -15,16 +15,16 @@ videoSetting = {facingMode: 'environment',
 let videoStreamElem = document.querySelector('.video__stream'),
     videoStreamTracks;
 
-function showVideoStreamTrackFromCamera(errorMessage) {
-    navigator.mediaDevices.getUserMedia({ video: videoSetting, audio: false })
+function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
+    return navigator.mediaDevices.getUserMedia({ video: videoSetting, audio: false })
         .then(function(stream) {
             videoStreamElem.srcObject = stream;
             videoStreamTracks = stream.getTracks();
+
+            return videoStreamElem;
         })
-        .catch(function(error) {
-            console.log(error);
-            // errorMessage(error);
-        });
+        .then(() => {return funcResolve(videoStreamElem)})
+        .catch(funcReject);
 }
 
 function stopVideoStreamTracks() {

@@ -16,7 +16,34 @@
     <title>Scanner Barcode EAN5</title>
 </head>
 <body class="page">
-    <script src="/blocks/page/page.js"></script>
+    <script type="text/javascript">
+        let pageElem = document.querySelector('.page'),
+            stylePageElem = document.createElement('style');
+
+        stylePageElem.setAttribute('type', 'text/css');
+
+        function setWindowSize() {
+            let globalWindowHeight = document.documentElement.clientHeight,
+                globalWindowWidth = document.documentElement.clientWidth;
+
+            stylePageElem.innerHTML = 
+                `body {
+                    --global-window-width: ${globalWindowWidth}px;
+                    --global-window-height: ${globalWindowHeight}px;
+                }`;
+            pageElem.appendChild(stylePageElem);
+        }
+
+        window.addEventListener('resize', setWindowSize);
+
+        setWindowSize();
+
+        // Disable touchstart scroll in chrome android
+        window.addEventListener("touchstart", () => {}, {passive: false} );
+        window.addEventListener("touchmove", (event) => {
+            event.preventDefault();
+        }, {passive: false} );
+    </script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
     <div class="container">
@@ -109,11 +136,6 @@
     </div>
 
     <div class="page__message page__message--show">
-        <div class="message message--footer">
-            <h3 class="message__header text--gostb text--gostb-h3">Your browser does not access a camera.</h3>
-        </div>
-    </div>
-    <div class="page__message">
         <div class="message message--footer">
             <h3 class="message__header text--gostb text--gostb-h3">Your camera is used only for scanning barcode.</h3>
         </div>

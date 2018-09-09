@@ -1,15 +1,15 @@
-export default function showBarcodeEAN5(barcodeElem, widthLineArr, numberBarcodeEAN5) {
-    let barcodeImgElem = barcodeElem.querySelector('.barcode__img'),
-        barcodeTextElem = barcodeElem.querySelector('.barcode__text'),
-        barcodeImgStyle = '1fr 1fr 1fr 2fr ';
+export default function drawBarcodeEAN5(barcodeBlock, widthLineArr, numberBarcodeEAN5Text) {
+    let barcodeImgElem = barcodeBlock.querySelector('.barcode__img'),
+        barcodeTextElem = barcodeBlock.querySelector('.barcode__text'),
+        barcodeImgElemStyle = '1fr 1fr 1fr 2fr ';
 
     for(let i = 0; i <widthLineArr.length; i++) {
-        if (i > 0 && i % 4 === 0) barcodeImgStyle = barcodeImgStyle + '1fr 1fr ';
-        barcodeImgStyle = barcodeImgStyle + widthLineArr[i] + 'fr ';
+        if (i > 0 && i % 4 === 0) barcodeImgElemStyle = barcodeImgElemStyle + '1fr 1fr ';
+        barcodeImgElemStyle = barcodeImgElemStyle + widthLineArr[i] + 'fr ';
     }
 
-    barcodeImgElem.style.gridTemplateColumns = barcodeImgStyle;
-    barcodeTextElem.textContent = numberBarcodeEAN5;
+    barcodeImgElem.style.gridTemplateColumns = barcodeImgElemStyle;
+    barcodeTextElem.textContent = numberBarcodeEAN5Text;
 
     return true;
 }

@@ -11,7 +11,7 @@ export default function getBarcodeEAN5FromImage(imgElem) {
     let widthAndColorElArr = widthImg > heightImg?
                             getWidthAndColorElArrFromImg(ctx.getImageData(0, Math.floor(heightImg / 2), halfWidthImg, 2).data, halfWidthImg):
                             getWidthAndColorElArrFromImg(ctx.getImageData(0, Math.floor(heightImg / 4), widthImg, 2).data, widthImg);
-
+    console.log(getNumberEAN5FromWidthAndColorElArr(widthAndColorElArr));
     return getNumberEAN5FromWidthAndColorElArr(widthAndColorElArr);
 }
 

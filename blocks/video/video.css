@@ -8,11 +8,22 @@
     transform-origin: 25% 50%;
     transform: scale3d(0, 0, 1);
     opacity: 0;
-    transition: all .225s ease-in-out 0s;
 }
-.video__message--show {
-    transform: scale3d(1, 1, 1);
-    opacity: 1;
+.video__message--animate-hide {
+    animation: video-message-animate-hide .255s ease 1 normal forwards;
+}
+.video__message--animate-show {
+    animation: video-message-animate-show .255s ease 1 normal forwards;
+}
+@keyframes video-message-animate-hide {
+    0% { transform: scale3d(1, 1, 1); opacity: 1 }
+    99% { transform: scale3d(.2, .3, 1); opacity: 0 }
+    100% { transform: scale3d(0, 0, 1); opacity: 0 }
+}
+@keyframes video-message-animate-show {
+    0% { transform: scale3d(0, 0, 1); opacity: 0 }
+    1% { transform: scale3d(.2, .3, 1); opacity: 0 }
+    100% { transform: scale3d(1, 1, 1); opacity: 1 }
 }
 
 .video__stream {

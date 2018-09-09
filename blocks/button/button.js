@@ -1,11 +1,9 @@
-export default function eventButtonFunction(parentElem, executeFunction, paramExecuteFunction) {
-    let buttonElem = parentElem.querySelector('.button');
-
-    buttonElem.addEventListener('click', () => {
+export default function addHandlersButton(buttonBlock, executeFunction, paramExecuteFunction) {
+    buttonBlock.addEventListener('click', () => {
         executeFunction(paramExecuteFunction);
     }, true);
 
-    buttonElem.addEventListener('touch', () => {
+    buttonBlock.addEventListener('touch', () => {
         executeFunction(paramExecuteFunction);
     }, true);
 }
