@@ -1,111 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- code page -->
-    <meta charset="UTF-8">
-    <!-- viewport -->
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- full screen view as app in ios and android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- no cache -->
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="pragma" content="no-cache">
-    <!-- title -->
-    <title>Scanner Barcode EAN5</title>
-</head>
-<body class="page">
-    <script type="text/javascript">
-        let pageElem = document.querySelector('.page'),
-            stylePageElem = document.createElement('style');
+    <head>
+        <!-- code page -->
+        <meta charset="UTF-8">
+        <!-- viewport -->
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- full screen view as app in ios and android -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <!-- no cache -->
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="pragma" content="no-cache">
+        <!-- title -->
+        <title>Scanner Barcode EAN5</title>
+    </head>
+    
+    <body class="page">
+        <script type="text/javascript">
+            let pageElem = document.querySelector('.page'),
+                stylePageElem = document.createElement('style');
 
-        stylePageElem.setAttribute('type', 'text/css');
+            stylePageElem.setAttribute('type', 'text/css');
 
-        function setWindowSize() {
-            let globalWindowHeight = document.documentElement.clientHeight,
-                globalWindowWidth = document.documentElement.clientWidth;
+            function setWindowSize() {
+                let globalWindowHeight = document.documentElement.clientHeight,
+                    globalWindowWidth = document.documentElement.clientWidth;
 
-            stylePageElem.innerHTML = 
-                `.page {
-                    --global-window-width: ${globalWindowWidth}px;
-                    --global-window-height: ${globalWindowHeight}px;
-                }`;
-            pageElem.appendChild(stylePageElem);
-        }
+                stylePageElem.innerHTML = 
+                    `.page {
+                        --global-window-width: ${globalWindowWidth}px;
+                        --global-window-height: ${globalWindowHeight}px;
+                    }`;
+                pageElem.appendChild(stylePageElem);
+            }
 
-        window.addEventListener('resize', setWindowSize);
+            window.addEventListener('resize', setWindowSize);
 
-        setWindowSize();
+            setWindowSize();
 
-        // Disable touchstart scroll in chrome android
-        window.addEventListener("touchstart", () => {}, {passive: false} );
-        window.addEventListener("touchmove", (event) => {
-            event.preventDefault();
-        }, {passive: false} );
-    </script>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+            // Disable touchstart scroll in chrome android
+            window.addEventListener("touchstart", () => {}, {passive: false} );
+            window.addEventListener("touchmove", (event) => {
+                event.preventDefault();
+            }, {passive: false} );
+        </script>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <div class="container">
-        <div class="container__video video">
-            <div class="video__message message message--window">
-                <h3 class="message__header text--gostb text--gostb-h3">Your EAN5-code:</h3>
-                <div class="message__img">
+        <div class="container">
+            <div class="container__video video">
+                <div class="video__message message message--window">
+                    <h3 class="message__header text--gostb text--gostb-h3">Your EAN5-code:</h3>
+                    <div class="message__img">
+                    </div>
+                    <button class="message__button button text--gostb">Repeat</button>
                 </div>
-                <button class="message__button button text--gostb">Repeat</button>
-            </div>
-            <video autoplay muted playsinline class="video__stream"></video>
-            <div class="video__frame">
-                <div class="video__squard"></div>
-                <div class="video__squard video__squard--grey">
-                    <div class="video__barcode barcode">
-                        <ul class="barcode__area barcode__area--example">
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                            <li class="barcode__line"></li>
-                        </ul>
-                        <div class="barcode__text text--gostb">52495</div>
+                <video autoplay muted playsinline class="video__stream"></video>
+                <div class="video__frame">
+                    <div class="video__squard"></div>
+                    <div class="video__squard video__squard--grey">
+                        <div class="video__barcode barcode">
+                            <ul class="barcode__area barcode__area--example">
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                                <li class="barcode__line"></li>
+                            </ul>
+                            <div class="barcode__text text--gostb">52495</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="page__message page__message--show">
-        <div class="message message--footer">
-            <h3 class="message__header text--gostb text--gostb-h3">Your camera is used only for scanning barcode.</h3>
+        <div class="page__message page__message--show">
+            <div class="message message--footer">
+                <h3 class="message__header text--gostb text--gostb-h3">Your camera is used only for scanning barcode.</h3>
+            </div>
         </div>
-    </div>
 
-    <script type="module" src="js/main.js"></script>
-</body>
+        <script type="module" src="js/main.js"></script>
+    </body>
 </html>
