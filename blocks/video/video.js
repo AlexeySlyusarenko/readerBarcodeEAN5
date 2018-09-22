@@ -15,7 +15,7 @@ aspectRatio = document.documentElement.clientWidth > document.documentElement.cl
                 document.documentElement.clientHeight / document.documentElement.clientWidth;
 
 videoSetting = {facingMode: 'environment', 
-                // aspectRatio: aspectRatio
+                aspectRatio: aspectRatio
             };
 
 let videoStreamElem = document.querySelector('.video__stream'),
