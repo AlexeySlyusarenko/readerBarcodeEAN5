@@ -1,42 +1,43 @@
-import getBarcodeEAN5FromImage from './bar_code.js';
-import {
-    showVideoStreamTrackFromCamera,
-    stopVideoStreamTracks,
-    showVideoMessage,
-    hideVideoMessage,
-    addHandlersMessageVideo
-} from '../blocks/video/video.js';
-import { showPageMessage, hidePageMessage } from '../blocks/page/page.js';
+import * as body from './blocks/body.js';
+import * as page from './blocks/page.js';
+import * as video from './blocks/video.js';
 
-let idRunScanBarcodeEAN5FromImage;
+import drawBarcodeEAN5 from './blocks/barcode.js';
+
+import * as barcodeEngine from './logic/barcode_engine.js';
+
+body.setHandlers();
+
+let idRunScanBarcodeEAN5FromImage,
+    idVideoHideMessage;
 
 function runScanBarcodeEAN5FromImage (imgElem) {
-    setTimeout(hideVideoMessage, 500);
-    setTimeout(hidePageMessage, 2000);
+    idVideoHideMessage = setTimeout(video.hideMessage, 500);
+    setTimeout(page.hideMessage, 2000);
     
     idRunScanBarcodeEAN5FromImage = setInterval(() => {
-        let barcodeEAN5Obj = getBarcodeEAN5FromImage(imgElem);
+        let numberEAN5 = barcodeEngine.getNumberEAN5FromImage(imgElem);
 
-        if (barcodeEAN5Obj.number) {
-            showVideoMessage(barcodeEAN5Obj);
+        if (numberEAN5) {
+            clearTimeout(idVideoHideMessage);
+            video.showMessage(numberEAN5);
             clearInterval(idRunScanBarcodeEAN5FromImage);
-            setTimeout(stopVideoStreamTracks, 500);
+            setTimeout(video.stopVideoStreamTracks, 500);
         }
     }, 200);
 }
 
 function showErrorMessagePage() {
-    showPageMessage('Your browser does not access a camera.');
+    page.showMessage('Your browser does not access a camera.');
 }
 
 function runShowVideoStreamTrackFromCamera() {
-
-    showVideoStreamTrackFromCamera(
+    video.showVideoStreamTrackFromCamera(
         runScanBarcodeEAN5FromImage,
         showErrorMessagePage,
     );
 }
 
-addHandlersMessageVideo(runShowVideoStreamTrackFromCamera);
+video.setHandlersMessage(runShowVideoStreamTrackFromCamera);
 
 runShowVideoStreamTrackFromCamera();
