@@ -1,0 +1,47 @@
+.message {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.message--window {
+    padding: 0 20px;
+    border-radius: 3px;
+    /* background-color: rgb(150, 150, 150); */
+}
+.message--footer {
+    padding: 5px 20px;
+    background-color: rgba(189, 88, 75, 0.9);
+}
+
+.message__header{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.message__img {
+    width: 30%;
+    height: 40%;
+    margin: 10px 0;
+}
+
+.message__button {
+    position: relative;
+    margin: 10px 0;
+}
+
+/* ======================= media query ======================= */
+
+/* for portrait */
+@media screen and (orientation: portrait) {
+
+    /* mobile */
+    @media screen and (max-width: 599px) {
+        .message__img {
+            width: 60%;
+            height: 20%;
+        }
+    }
+}
+/* =========================================================== */
