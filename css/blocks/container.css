@@ -24,7 +24,10 @@
     @media screen and (max-width: 599px) {
         .container__video {
             width: var(--global-window-width);
-           height: var(--global-window-height);
+            height: var(--global-window-height);
+            max-width: 9000px;
+            max-height: 9000px;
+        
         }
     }
 }
@@ -37,6 +40,8 @@
         .container__video {
             width: var(--global-window-width);
             height: var(--global-window-height);
+            max-width: 9000px;
+            max-height: 9000px;
         }
     }
 
@@ -45,6 +50,8 @@
         .container__video {
             width: var(--global-window-width);
             height: var(--global-window-height);
+            max-width: 9000px;
+            max-height: 9000px;
         }
     }
 }
