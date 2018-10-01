@@ -5,17 +5,19 @@ let videoSetting = {},
 
 let videoStreamElem = document.querySelector('.video__stream'),
     videoMessageElem = document.querySelector('.video__message'),
-    videoStreamTracks,
-    widthVideoStreamElem = parseInt(getComputedStyle(videoStreamElem).width),
-    heightVideoStreamElem = parseInt(getComputedStyle(videoStreamElem).height);
+    videoStreamTracks;
+//     widthVideoStreamElem = parseInt(getComputedStyle(videoStreamElem).width),
+//     heightVideoStreamElem = parseInt(getComputedStyle(videoStreamElem).height);
 
-aspectRatio = widthVideoStreamElem > heightVideoStreamElem ?
-            widthVideoStreamElem / heightVideoStreamElem:
-            heightVideoStreamElem / widthVideoStreamElem;
-console.log(aspectRatio);
+// aspectRatio = widthVideoStreamElem > heightVideoStreamElem ?
+//             widthVideoStreamElem / heightVideoStreamElem:
+//             heightVideoStreamElem / widthVideoStreamElem;
+// console.log(aspectRatio);
 videoSetting = {
         width: { min: 640, ideal: 1280, max: 1920 },
+        height: { min: 480, ideal: 720, max: 1080 },
         facingMode: 'environment',
+        // aspectRatio: aspectRatio
 };
 
 function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
