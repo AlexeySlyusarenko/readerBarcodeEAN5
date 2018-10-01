@@ -3,20 +3,22 @@ import * as message from './message.js';
 let videoSetting = {},
     aspectRatio;
 
-aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
-            document.documentElement.clientWidth / document.documentElement.clientHeight:
-            document.documentElement.clientHeight / document.documentElement.clientWidth;
+let videoStreamElem = document.querySelector('.video__stream'),
+    videoMessageElem = document.querySelector('.video__message'),
+    videoStreamTracks,
+    widthVideoStreamElem = parseInt(getComputedStyle(videoStreamElem).width),
+    heightVideoStreamElem = parseInt(getComputedStyle(videoStreamElem).height);
 
+aspectRatio = widthVideoStreamElem > heightVideoStreamElem ?
+            widthVideoStreamElem / heightVideoStreamElem:
+            heightVideoStreamElem / widthVideoStreamElem;
+console.log(aspectRatio);
 videoSetting = {
         width: { min: 640, ideal: 1280, max: 1920 },
         height: { min: 480, ideal: 720, max: 1080 },
         facingMode: 'environment',
-        aspectRatio: 1.7
+        aspectRatio: aspectRatio
 };
-
-let videoStreamElem = document.querySelector('.video__stream'),
-    videoMessageElem = document.querySelector('.video__message'),
-    videoStreamTracks;
 
 function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
     return navigator.mediaDevices.getUserMedia({ video: videoSetting, audio: false })
