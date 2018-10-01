@@ -3,16 +3,16 @@ import * as message from './message.js';
 let videoSetting = {},
     aspectRatio;
 
-// videoSetting = {width: { min: 640, ideal: 1280},
-//                 height: { min: 480, ideal: 720}};
-
 aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
-                document.documentElement.clientWidth / document.documentElement.clientHeight:
-                document.documentElement.clientHeight / document.documentElement.clientWidth;
+            document.documentElement.clientWidth / document.documentElement.clientHeight:
+            document.documentElement.clientHeight / document.documentElement.clientWidth;
 
-videoSetting = {facingMode: 'environment', 
-                // aspectRatio: aspectRatio
-            };
+videoSetting = {
+        width: { min: 640, ideal: 1280, max: 1920 },
+        height: { min: 480, ideal: 720, max: 1080 },
+        facingMode: 'environment',
+        aspectRatio: 1.7
+};
 
 let videoStreamElem = document.querySelector('.video__stream'),
     videoMessageElem = document.querySelector('.video__message'),
