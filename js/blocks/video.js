@@ -17,7 +17,7 @@ videoSetting = {
         width: { min: 640, ideal: 1280, max: 1920 },
         height: { min: 480, ideal: 720, max: 1080 },
         facingMode: 'environment',
-        aspectRatio: aspectRatio
+        aspectRatio: 3 //aspectRatio
 };
 
 function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
@@ -25,6 +25,8 @@ function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
         .then(function(stream) {
             videoStreamElem.srcObject = stream;
             videoStreamTracks = stream.getTracks();
+
+            console.log(videoStreamTracks[0].getConstraints());
 
             return videoStreamElem;
         })
