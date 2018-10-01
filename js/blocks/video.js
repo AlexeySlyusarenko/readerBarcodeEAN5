@@ -3,14 +3,14 @@ import * as message from './message.js';
 let videoSetting = {},
     aspectRatio;
 
-// videoSetting = {width: { min: 1024, ideal: 1280},
-//                 height: { min: 700, ideal: 720}};
+// videoSetting = {width: { min: 640, ideal: 1280},
+//                 height: { min: 480, ideal: 720}};
 
 aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
                 document.documentElement.clientWidth / document.documentElement.clientHeight:
                 document.documentElement.clientHeight / document.documentElement.clientWidth;
 
-videoSetting = {//facingMode: 'environment', 
+videoSetting = {facingMode: 'environment', 
                 // aspectRatio: aspectRatio
             };
 
