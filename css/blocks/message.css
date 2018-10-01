@@ -8,7 +8,7 @@
 .message--window {
     padding: 0 20px;
     border-radius: 3px;
-    /* background-color: rgb(150, 150, 150); */
+    background-color: rgb(150, 150, 150);
 }
 .message--footer {
     padding: 5px 20px;
