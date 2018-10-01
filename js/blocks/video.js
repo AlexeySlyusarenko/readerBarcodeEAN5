@@ -16,7 +16,6 @@ console.log(aspectRatio);
 videoSetting = {
         width: { min: 640, ideal: 1280, max: 1920 },
         facingMode: 'environment',
-        aspectRatio: 1 //aspectRatio
 };
 
 function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
