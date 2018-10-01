@@ -28,6 +28,7 @@
 
 .video__stream {
     z-index: 50;
+    object-fit: cover;
     position: relative;
     width: 100%;
     height: 100%;

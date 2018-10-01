@@ -1,4 +1,37 @@
-export default function getBarcodeEAN5FromImage(imgElem) {
+const CHECKSUM = ['GGLLL',
+                    'GLGLL',
+                    'GLLGL',
+                    'GLLLG',
+                    'LGGLL',
+                    'LLGGL',
+                    'LLLGG',
+                    'LGLGL',
+                    'LGLLG',
+                    'LLGLG'],
+
+    EAN5L = [3211,
+            2221,
+            2122,
+            1411,
+            1132,
+            1231,
+            1114,
+            1312,
+            1213,
+            3112],
+
+    EAN5G = [1123,
+            1222,
+            2212,
+            1141,
+            2311,
+            1321,
+            4111,
+            2131,
+            3121,
+            2113];
+
+function getNumberEAN5FromImage(imgElem) {
     let canvas = document.createElement("canvas"),
         ctx = canvas.getContext("2d"),
         widthImg = Math.floor(imgElem.getBoundingClientRect().width),
@@ -8,14 +41,14 @@ export default function getBarcodeEAN5FromImage(imgElem) {
     canvas.height = heightImg;
     ctx.drawImage(imgElem, 0, 0, widthImg, heightImg);
 
-    let widthAndColorElArr = widthImg > heightImg?
-                            getWidthAndColorElArrFromImg(ctx.getImageData(0, Math.floor(heightImg / 2), halfWidthImg, 2).data, halfWidthImg):
-                            getWidthAndColorElArrFromImg(ctx.getImageData(0, Math.floor(heightImg / 4), widthImg, 2).data, widthImg);
-    return getNumberEAN5FromWidthAndColorElArr(widthAndColorElArr);
+    let widthAndColorLineArr = widthImg > heightImg?
+                            getWidthAndColorLineFromImg(ctx.getImageData(0, Math.floor(heightImg / 2), halfWidthImg, 2).data, halfWidthImg):
+                            getWidthAndColorLineFromImg(ctx.getImageData(0, Math.floor(heightImg / 4), widthImg, 2).data, widthImg);
+    return getNumberEAN5FromWidthAndColorLine(widthAndColorLineArr);
 }
 
-function getWidthAndColorElArrFromImg(imageData, imageWidth) {
-    let widthAndColorElArr = [],
+function getWidthAndColorLineFromImg(imageData, imageWidth) {
+    let widthAndColorLineArr = [],
         sum = [],
         el = undefined,
         indexEl = 0,
@@ -23,8 +56,8 @@ function getWidthAndColorElArrFromImg(imageData, imageWidth) {
         max = 0,
         pivot = 50;
 
-    widthAndColorElArr[0] = [];     // width element array
-    widthAndColorElArr[1] = [];     // color (0-white, 1-black) element array
+    widthAndColorLineArr[0] = [];     // width element array
+    widthAndColorLineArr[1] = [];     // color (0-white, 1-black) element array
 
     for(let row = 0; row < 2; row++){
         for(let col = 0; col < imageWidth; col++){
@@ -45,32 +78,32 @@ function getWidthAndColorElArrFromImg(imageData, imageWidth) {
 
     sum[0] = sum[0] > pivot ? 0: 1;
     el = sum[0];
-    widthAndColorElArr[0][0] = 1
+    widthAndColorLineArr[0][0] = 1
     for (let i = 1; i < sum.length; i++) {
         sum[i] = sum[i] > pivot ? 0: 1;
         if (sum[i] != el) {
             indexEl++;
             el = sum[i];
-            widthAndColorElArr[0][indexEl] = 1;
+            widthAndColorLineArr[0][indexEl] = 1;
         } else {
-            widthAndColorElArr[0][indexEl]++;
+            widthAndColorLineArr[0][indexEl]++;
         }
     }
-    widthAndColorElArr[1] = sum;
+    widthAndColorLineArr[1] = sum;
 
-    return widthAndColorElArr;
+    return widthAndColorLineArr;
 }
 
-function getNumberEAN5FromWidthAndColorElArr(widthAndColorElArr) {
-    for(let i = widthAndColorElArr[1][0] == 1? 0: 1; i < widthAndColorElArr[0].length - 30; i = i + 2) {
-        if((widthAndColorElArr[0][i] + 2) * 4 >= widthAndColorElArr[0][i + 30] - 2 &&
-            (widthAndColorElArr[0][i] + 2) * 4 >= widthAndColorElArr[0][i + 29] - 2 &&
-            widthAndColorElArr[0][i] >= widthAndColorElArr[0][i + 1] - 2 &&
-            widthAndColorElArr[0][i] <= widthAndColorElArr[0][i + 1] + 2 &&
-            widthAndColorElArr[0][i] * 2 >= widthAndColorElArr[0][i + 2] - 2 &&
-            widthAndColorElArr[0][i] * 2 <= widthAndColorElArr[0][i + 2] + 2)
+function getNumberEAN5FromWidthAndColorLine(widthAndColorLineArr) {
+    for(let i = widthAndColorLineArr[1][0] == 1? 0: 1; i < widthAndColorLineArr[0].length - 30; i = i + 2) {
+        if((widthAndColorLineArr[0][i] + 2) * 4 >= widthAndColorLineArr[0][i + 30] - 2 &&
+            (widthAndColorLineArr[0][i] + 2) * 4 >= widthAndColorLineArr[0][i + 29] - 2 &&
+            widthAndColorLineArr[0][i] >= widthAndColorLineArr[0][i + 1] - 2 &&
+            widthAndColorLineArr[0][i] <= widthAndColorLineArr[0][i + 1] + 2 &&
+            widthAndColorLineArr[0][i] * 2 >= widthAndColorLineArr[0][i + 2] - 2 &&
+            widthAndColorLineArr[0][i] * 2 <= widthAndColorLineArr[0][i + 2] + 2)
         {
-                return checkCodeNumberEAN5Arr(widthAndColorElArr[0].slice(i, i + 31));
+            return checkCodeNumberEAN5Arr(widthAndColorLineArr[0].slice(i, i + 31));
         }
     }
 
@@ -133,42 +166,22 @@ function checkInaccurateWidthLineEAN5Arr(modWidthLineEAN5Arr, indexInaccurateMod
             if (iStr[i] == 1) fModWidthLineEAN5Arr[indexInaccurateModWidthLineEAN5Arr[indexInaccurateModWidthLineEAN5Arr.length - 1 - i]]++;
         }
 
-        barcodeEAN5Obj.widthLineEAN5Arr = fModWidthLineEAN5Arr;
+        // barcodeEAN5Obj.widthLineEAN5Arr = fModWidthLineEAN5Arr;
         barcodeEAN5Obj.number = getNumberEAN5(fModWidthLineEAN5Arr);
         
-        if (barcodeEAN5Obj.number) return barcodeEAN5Obj;
+        if (barcodeEAN5Obj.number) return barcodeEAN5Obj.number;
     }
 
     return false;
 }
 
-function getNumberEAN5(widthLineEAN5Arr) {
-    const EAN5L = [3211,
-                2221,
-                2122,
-                1411,
-                1132,
-                1231,
-                1114,
-                1312,
-                1213,
-                3112],
-        EAN5G = [1123,
-                1222,
-                2212,
-                1141,
-                2311,
-                1321,
-                4111,
-                2131,
-                3121,
-                2113];
+function getNumberEAN5(widthLineEAN5) {
     let numberStr = '',
         checksumStr = '',
         numberTemp = '';
     
-    for (let i = 0; i < widthLineEAN5Arr.length; i = i + 4) {
-        numberTemp = `${widthLineEAN5Arr[i]}${widthLineEAN5Arr[i + 1]}${widthLineEAN5Arr[i + 2]}${widthLineEAN5Arr[i + 3]}`
+    for (let i = 0; i < widthLineEAN5.length; i = i + 4) {
+        numberTemp = `${widthLineEAN5[i]}${widthLineEAN5[i + 1]}${widthLineEAN5[i + 2]}${widthLineEAN5[i + 3]}`
         for (let k = 0; k <= 9; k++) {
             if (numberTemp == EAN5L[k]) {
                 numberStr = numberStr + k;
@@ -181,30 +194,53 @@ function getNumberEAN5(widthLineEAN5Arr) {
             }
         }
     }
-    if(verifyChecksumEAN5(numberStr, checksumStr)) return numberStr;
+
+    if(verifyChecksumEAN5(numberStr, checksumStr)) {
+        return numberStr;
+    }
 
     return false;
 }
 
-function verifyChecksumEAN5(numberStr, checksumStr) {
-    const CHECKSUM = ['GGLLL',
-                    'GLGLL',
-                    'GLLGL',
-                    'GLLLG',
-                    'LGGLL',
-                    'LLGGL',
-                    'LLLGG',
-                    'LGLGL',
-                    'LGLLG',
-                    'LLGLG'];
+function getChecksumEAN5(numberEAN5) {
     let checksumNumber = 0;
-    for (let i = 0; i < numberStr.length; i = i + 2) {
-        checksumNumber = checksumNumber + Number(numberStr.charAt(i)) * 3; 
+
+    numberEAN5 = numberEAN5.toString();
+    for (let i = 0; i < numberEAN5.length; i = i + 2) {
+        checksumNumber = checksumNumber + Number(numberEAN5.charAt(i)) * 3; 
     }
-    for (let i = 1; i < numberStr.length; i = i + 2) {
-        checksumNumber = checksumNumber + Number(numberStr.charAt(i)) * 9; 
+    for (let i = 1; i < numberEAN5.length; i = i + 2) {
+        checksumNumber = checksumNumber + Number(numberEAN5.charAt(i)) * 9; 
     }
-    if (CHECKSUM[checksumNumber % 10] == checksumStr) return true;
+
+    return CHECKSUM[checksumNumber % 10];
+}
+
+function verifyChecksumEAN5(numberEAN5, checksumEAN5) {
+
+    if (getChecksumEAN5(numberEAN5) == checksumEAN5) return true;
     
     return false;
 }
+
+function getWidthLineEAN5(numberEAN5) {
+    let widthLineEAN5Str = '1112',
+        checksumNumber = '';
+
+    checksumNumber = getChecksumEAN5(numberEAN5);
+    
+    for (let i = 0; i < checksumNumber.length; i++) {
+        if (checksumNumber[i] == 'L') {
+            widthLineEAN5Str = widthLineEAN5Str + EAN5L[numberEAN5[i]];
+        } else if (checksumNumber[i] == 'G') {
+            widthLineEAN5Str = widthLineEAN5Str + EAN5G[numberEAN5[i]];
+        }
+        if (i + 1 < checksumNumber.length) {
+            widthLineEAN5Str = widthLineEAN5Str + '11';
+        }
+    }
+
+    return widthLineEAN5Str;
+}
+
+export { getNumberEAN5FromImage, getWidthLineEAN5 };

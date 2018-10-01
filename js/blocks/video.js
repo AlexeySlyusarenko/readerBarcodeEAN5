@@ -1,22 +1,10 @@
-import { 
-    setImgMessage,
-    clearImgMessage,
-    addHandlersButtonMessage 
-} from '../message/message.js';
+import * as message from './message.js';
 
-let videoSetting = {},
-    aspectRatio;
-
-// videoSetting = {width: { min: 1024, ideal: 1280},
-//                 height: { min: 700, ideal: 720}};
-
-aspectRatio = document.documentElement.clientWidth > document.documentElement.clientHeight ?
-                document.documentElement.clientWidth / document.documentElement.clientHeight:
-                document.documentElement.clientHeight / document.documentElement.clientWidth;
-
-videoSetting = {facingMode: 'environment', 
-                aspectRatio: aspectRatio
-            };
+let videoSetting = {
+        width: { min: 640, ideal: 1280, max: 1920 },
+        height: { min: 480, ideal: 720, max: 1080 },
+        facingMode: 'environment'
+    };
 
 let videoStreamElem = document.querySelector('.video__stream'),
     videoMessageElem = document.querySelector('.video__message'),
@@ -27,7 +15,7 @@ function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
         .then(function(stream) {
             videoStreamElem.srcObject = stream;
             videoStreamTracks = stream.getTracks();
-            
+
             return videoStreamElem;
         })
         .then(() => {return funcResolve(videoStreamElem)})
@@ -40,8 +28,8 @@ function stopVideoStreamTracks() {
     });
 }
 
-function showVideoMessage(videoMessageImgObj) {
-    setImgMessage(videoMessageElem, videoMessageImgObj);
+function showMessage(numberEAN5) {
+    message.setField(videoMessageElem, 'Your EAN5-code', numberEAN5);
     
     videoMessageElem.classList.add('video__message--animate-show');
     if (!videoMessageElem.classList.contains('video__message--animate-hide')) {
@@ -49,19 +37,18 @@ function showVideoMessage(videoMessageImgObj) {
     }
 }
 
-function hideVideoMessage() {
+function hideMessage() {
     videoMessageElem.classList.remove('video__message--animate-show');
-    clearImgMessage(videoMessageElem);
 }
 
-function addHandlersMessageVideo(executeFunction, paramExecuteFunction) {
-    return addHandlersButtonMessage(videoMessageElem, executeFunction, paramExecuteFunction);
+function setHandlersMessage(execFunction, paramExecFunction) {
+    return message.setHandlersButton(videoMessageElem, execFunction, paramExecFunction);
 };
 
 export {
     showVideoStreamTrackFromCamera,
     stopVideoStreamTracks,
-    showVideoMessage,
-    hideVideoMessage,
-    addHandlersMessageVideo
+    showMessage,
+    hideMessage,
+    setHandlersMessage
 };
