@@ -1,25 +1,20 @@
 import * as message from './message.js';
 
-let videoSetting = {},
-    aspectRatio;
+let videoSetting = {
+        width: { min: 640, ideal: 1280, max: 1920 },
+        height: { min: 480, ideal: 720, max: 1080 },
+        facingMode: 'environment'
+    };
 
 let videoStreamElem = document.querySelector('.video__stream'),
     videoMessageElem = document.querySelector('.video__message'),
     videoStreamTracks;
-
-videoSetting = {
-    width: { min: 640, ideal: 1280, max: 1920 },
-    height: { min: 480, ideal: 720, max: 1080 },
-    facingMode: 'environment'
-};
 
 function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
     return navigator.mediaDevices.getUserMedia({ video: videoSetting, audio: false })
         .then(function(stream) {
             videoStreamElem.srcObject = stream;
             videoStreamTracks = stream.getTracks();
-
-            console.log(videoStreamTracks[0].getConstraints());
 
             return videoStreamElem;
         })

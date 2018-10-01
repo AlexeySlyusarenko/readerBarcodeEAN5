@@ -194,7 +194,6 @@ function getNumberEAN5(widthLineEAN5) {
             }
         }
     }
-    console.log(numberStr, checksumStr);
 
     if(verifyChecksumEAN5(numberStr, checksumStr)) {
         return numberStr;
