@@ -2,8 +2,6 @@ import * as body from './blocks/body.js';
 import * as page from './blocks/page.js';
 import * as video from './blocks/video.js';
 
-import drawBarcodeEAN5 from './blocks/barcode.js';
-
 import * as barcodeEngine from './logic/barcode_engine.js';
 
 body.setHandlers();
