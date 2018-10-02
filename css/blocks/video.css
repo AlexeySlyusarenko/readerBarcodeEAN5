@@ -1,3 +1,7 @@
+.video {
+    overflow: hidden;
+}
+
 .video__message {
     z-index: 200;
     position: absolute;
