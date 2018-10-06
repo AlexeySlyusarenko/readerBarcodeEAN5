@@ -3,8 +3,11 @@
     "short_name": "Barcode",
     "start_url": ".",
     "display": "standalone",
+    ​​"orientation": "portrait-primary",
     "background_color": "#C8C8C8",
     "description": "Barcode reader EAN5 from your camera.",
+    "prefer_related_applications": false,
+    "theme_color": "#C8C8C8",
     "icons": [{
         "src": "icon/barcode.png",
         "sizes": "48x48",
