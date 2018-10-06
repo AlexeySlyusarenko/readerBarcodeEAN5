@@ -29,7 +29,7 @@ function stopVideoStreamTracks() {
 }
 
 function showMessage(numberEAN5) {
-    message.setField(videoMessageElem, 'Your EAN5-code', numberEAN5);
+    message.setField(videoMessageElem, 'Your EAN5-code:', numberEAN5);
     
     videoMessageElem.classList.add('video__message--animate-show');
     if (!videoMessageElem.classList.contains('video__message--animate-hide')) {

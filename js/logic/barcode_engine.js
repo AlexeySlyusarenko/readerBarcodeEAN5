@@ -35,15 +35,17 @@ function getNumberEAN5FromImage(imgElem) {
     let canvas = document.createElement("canvas"),
         ctx = canvas.getContext("2d"),
         widthImg = Math.floor(imgElem.getBoundingClientRect().width),
-        halfWidthImg = Math.floor(widthImg / 2),
+        // halfWidthImg = Math.floor(widthImg / 2),
         heightImg = imgElem.getBoundingClientRect().height;
     canvas.width = widthImg;
     canvas.height = heightImg;
     ctx.drawImage(imgElem, 0, 0, widthImg, heightImg);
 
-    let widthAndColorLineArr = widthImg > heightImg?
-                            getWidthAndColorLineFromImg(ctx.getImageData(0, Math.floor(heightImg / 2), halfWidthImg, 2).data, halfWidthImg):
-                            getWidthAndColorLineFromImg(ctx.getImageData(0, Math.floor(heightImg / 4), widthImg, 2).data, widthImg);
+    // let widthAndColorLineArr = widthImg > heightImg?
+    //                         getWidthAndColorLineFromImg(ctx.getImageData(0, Math.floor(heightImg / 2), halfWidthImg, 2).data, halfWidthImg):
+    //                         getWidthAndColorLineFromImg(ctx.getImageData(0, Math.floor(heightImg / 4), widthImg, 2).data, widthImg);
+    let widthAndColorLineArr = getWidthAndColorLineFromImg(ctx.getImageData(0, Math.floor(heightImg / 2), widthImg, 2).data, widthImg);
+
     return getNumberEAN5FromWidthAndColorLine(widthAndColorLineArr);
 }
 
