@@ -11,6 +11,7 @@ let videoStreamElem = document.querySelector('.video__stream'),
     videoStreamTracks;
 
 function showVideoStreamTrackFromCamera(funcResolve, funcReject) {
+    if (navigator.mediaDevices) return funcReject();
     return navigator.mediaDevices.getUserMedia({ video: videoSetting, audio: false })
         .then(function(stream) {
             videoStreamElem.srcObject = stream;
