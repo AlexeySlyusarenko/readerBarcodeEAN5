@@ -1,115 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, viewport-fit=contain">
-        <title>Barcode reader</title>
-        <meta name="title" content="Barcode reader EAN5">
-        <meta name="description" content="Barcode reader EAN5 from your camera.">
-        <!-- favicon -->
-        <link rel="icon" type="image/png" href="icon/barcode.png">
 
-        <!-- mac -->
-        <link rel="mask-icon" href="icon/barcode.svg">
-        
-        <!-- safari ios -->
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="apple-touch-icon" href="icon/smartphone.png">
-        <meta name="apple-mobile-web-app-title" content="Barcode">
-        <meta name="apple-mobile-web-app-status-bar-style" content="default">
-        
-        <!-- chrome android -->
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="theme-color" content="#C8C8C8">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, viewport-fit=contain">
+    <title>Barcode reader</title>
+    <meta name="title" content="Barcode reader EAN5">
+    <meta name="description" content="Barcode reader EAN5 from your camera.">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="icon/barcode.png">
 
-        <link rel="manifest" href="manifest.webmanifest">
-    </head>
-    
-    <body class="page">
-        <script type="text/javascript">
-            let pageElem = document.querySelector('body'),
-                stylePageElem = document.createElement('style');
+    <!-- mac -->
+    <link rel="mask-icon" href="icon/barcode.svg">
 
-            stylePageElem.setAttribute('type', 'text/css');
+    <!-- safari ios -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="icon/smartphone.png">
+    <meta name="apple-mobile-web-app-title" content="Barcode">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-            let globalWindowHeight = document.documentElement.clientHeight,
-                globalWindowWidth = document.documentElement.clientWidth;
+    <!-- chrome android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#C8C8C8">
 
-            stylePageElem.innerHTML = 
-                `body {
+    <link rel="manifest" href="manifest.webmanifest">
+</head>
+
+<body class="page">
+    <script type="text/javascript">
+        let pageElem = document.querySelector('body'),
+            stylePageElem = document.createElement('style');
+
+        stylePageElem.setAttribute('type', 'text/css');
+
+        let globalWindowHeight = document.documentElement.clientHeight,
+            globalWindowWidth = document.documentElement.clientWidth;
+
+        stylePageElem.innerHTML =
+            `body {
                     --global-window-width: ${globalWindowWidth}px;
                     --global-window-height: ${globalWindowHeight}px;
                 }`;
-            pageElem.appendChild(stylePageElem);
+        pageElem.appendChild(stylePageElem);
 
-            window.addEventListener("touchstart", () => {}, {passive: false} );
-            window.addEventListener("touchmove", (event) => {
-                event.preventDefault();
-            }, {passive: false} );
-        </script>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        window.addEventListener("touchstart", () => {}, {
+            passive: false
+        });
+        window.addEventListener("touchmove", (event) => {
+            event.preventDefault();
+        }, {
+            passive: false
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
-        <div class="container">
-            <div class="container__video video">
-                <div class="video__message message message--window">
-                    <h3 class="message__header text--gostb text--gostb-h3">Your EAN5-code:</h3>
-                    <div class="message__img">
-                    </div>
-                    <button class="message__button button text--gostb">Repeat</button>
+    <div class="container">
+        <div class="container__video video">
+            <div class="video__message message message--window">
+                <h3 class="message__header text--gostb text--gostb-h3">Your EAN5-code:</h3>
+                <div class="message__img">
                 </div>
-                <div class="video__frame">
-                    <div class="video__squard">
-                        <video autoplay muted playsinline class="video__stream"></video>
-                    </div>
-                    <div class="video__squard video__squard--grey">
-                        <div class="video__barcode barcode">
-                            <ul class="barcode__area barcode__area--example">
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                                <li class="barcode__line"></li>
-                            </ul>
-                            <div class="barcode__text text--gostb">52495</div>
-                        </div>
+                <button class="message__button button text--gostb">Repeat</button>
+            </div>
+            <div class="video__frame">
+                <div class="video__squard">
+                    <video autoplay muted playsinline class="video__stream"></video>
+                </div>
+                <div class="video__squard video__squard--grey">
+                    <div class="video__barcode barcode">
+                        <ul class="barcode__area barcode__area--example">
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                            <li class="barcode__line"></li>
+                        </ul>
+                        <div class="barcode__text text--gostb">52495</div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="page__message page__message--show">
-            <div class="message message--footer">
-                <h3 class="message__header text--gostb text--gostb-h3">Your camera is used only for scanning barcode.</h3>
-            </div>
+    <div class="page__message page__message--show">
+        <div class="message message--footer">
+            <h3 class="message__header text--gostb text--gostb-h3">Your camera is used only for scanning barcode.</h3>
         </div>
+    </div>
 
-        <script type="module" src="js/main.js"></script>
-    </body>
+    <script type="module" src="js/main.js"></script>
+</body>
+
 </html>
